@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 
 @Component({
   selector: 'app-file-input',
@@ -7,5 +7,9 @@ import {Component, OnInit} from '@angular/core';
 })
 
 export class FileInputComponent {
+  @Output() fileReceived: EventEmitter<File> = new EventEmitter<File>();
 
+  public changeListener(event: File): void {
+    this.fileReceived.emit(event);
+  }
 }

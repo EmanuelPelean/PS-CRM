@@ -12,7 +12,7 @@ import {StudentsModule} from './students/students.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    StudentsModule // remove when adding nested routing
+    StudentsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,9 +1,10 @@
-// components
-import * as fromComponents from './components';
 import {NgModule} from '@angular/core';
 import {ReactiveFormsModule} from '@angular/forms';
 import {CommonModule} from '@angular/common';
 import {HttpClientModule} from '@angular/common/http';
+
+// components
+import * as fromComponents from './components';
 
 @NgModule({
   imports: [
@@ -12,7 +13,7 @@ import {HttpClientModule} from '@angular/common/http';
     HttpClientModule,
   ],
   providers: [],
-  declarations: [...fromComponents.components],
+  declarations: [ ...fromComponents.components],
   exports: [...fromComponents.components],
 })
 export class StudentsModule {}

@@ -7,9 +7,9 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 })
 
 export class FileInputComponent {
-  @Output() fileReceived: EventEmitter<File> = new EventEmitter<File>();
+  @Output() fileReceived: EventEmitter<FileList> = new EventEmitter<FileList>();
 
-  public changeListener(event: File): void {
-    this.fileReceived.emit(event);
+  public changeListener(files: FileList): void {
+    this.fileReceived.emit(files);
   }
 }

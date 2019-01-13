@@ -1,5 +1,10 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Papa} from 'ngx-papaparse';
+import {StudentsStateMain} from '../../store/reducers';
+import {Store} from '@ngrx/store';
+import {Observable} from 'rxjs';
+import {Student} from '../../models/student.model';
+import {getAllStudents} from '../../store/selectors/students.selectors';
 
 
 @Component ({
@@ -8,9 +13,19 @@ import {Papa} from 'ngx-papaparse';
   styleUrls: ['students.component.less']
 })
 
-export class StudentsComponent {
+export class StudentsComponent implements OnInit {
 
-  constructor(private papa: Papa) {
+  students$: Observable<Student[]>;
+
+  constructor(private papa: Papa,
+              private store: Store<StudentsStateMain>) {
+  }
+
+  ngOnInit(): void {
+    this.students$ = this.store.select(getAllStudents);
+    this.students$.pipe().subscribe(value => {
+      console.log('my value', value);
+    });
   }
 
   public convertFileInput(files: FileList) {

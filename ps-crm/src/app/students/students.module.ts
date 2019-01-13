@@ -9,6 +9,7 @@ import * as fromComponents from './components';
 // containers
 import * as fromContainers from './containers';
 import {RouterModule, Routes} from '@angular/router';
+import {PapaParseModule} from 'ngx-papaparse';
 
 // routes
 export const ROUTES: Routes = [
@@ -23,6 +24,7 @@ export const ROUTES: Routes = [
     CommonModule,
     ReactiveFormsModule,
     HttpClientModule,
+    PapaParseModule,
     RouterModule.forChild(ROUTES),
   ],
   providers: [],

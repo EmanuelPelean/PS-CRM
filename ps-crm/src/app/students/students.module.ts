@@ -2,14 +2,17 @@ import {NgModule} from '@angular/core';
 import {ReactiveFormsModule} from '@angular/forms';
 import {CommonModule} from '@angular/common';
 import {HttpClientModule} from '@angular/common/http';
+import {RouterModule, Routes} from '@angular/router';
+import {PapaParseModule} from 'ngx-papaparse';
+import {StoreModule} from '@ngrx/store';
+
+import { reducers } from './store/reducers';
 
 // components
 import * as fromComponents from './components';
 
 // containers
 import * as fromContainers from './containers';
-import {RouterModule, Routes} from '@angular/router';
-import {PapaParseModule} from 'ngx-papaparse';
 
 // routes
 export const ROUTES: Routes = [
@@ -26,6 +29,7 @@ export const ROUTES: Routes = [
     HttpClientModule,
     PapaParseModule,
     RouterModule.forChild(ROUTES),
+    StoreModule.forFeature('StudentsMain', reducers),
   ],
   providers: [],
   declarations: [ ...fromComponents.components, ...fromContainers.containers],

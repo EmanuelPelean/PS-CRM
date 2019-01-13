@@ -6,6 +6,10 @@ import {HttpClientModule} from '@angular/common/http';
 // components
 import * as fromComponents from './components';
 
+// containers
+import * as fromContainers from './containers';
+import {from} from 'rxjs';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -13,7 +17,7 @@ import * as fromComponents from './components';
     HttpClientModule,
   ],
   providers: [],
-  declarations: [ ...fromComponents.components],
-  exports: [...fromComponents.components],
+  declarations: [ ...fromComponents.components, ...fromContainers.containers],
+  exports: [...fromComponents.components, ...fromContainers.containers],
 })
 export class StudentsModule {}

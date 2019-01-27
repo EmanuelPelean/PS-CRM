@@ -1,6 +1,6 @@
 // load pizzas
-import {Action} from '@ngrx/store';
-import {Student} from '../../models/student.model';
+import { Action } from '@ngrx/store';
+import { Student } from '../../models/student.model';
 
 export const LOAD_STUDENTS = '[Students] Load Students';
 export const LOAD_STUDENTS_FAIL = '[Students] Load Students Fail';
@@ -21,4 +21,7 @@ export class LoadStudentsSuccess implements Action {
 }
 
 // action types
-export type StudentsActions = LoadStudents | LoadStudentsFail | LoadStudentsSuccess;
+export type StudentsActions =
+  | LoadStudents
+  | LoadStudentsFail
+  | LoadStudentsSuccess;

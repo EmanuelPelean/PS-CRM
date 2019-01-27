@@ -9,7 +9,7 @@ export function studentsReducer(
     case fromActions.LOAD_STUDENTS: {
       return {
         ...state,
-        loading: true,
+        loading: true
       };
     }
 
@@ -27,7 +27,7 @@ export function studentsReducer(
       return {
         ...state,
         loading: false,
-        loaded: false,
+        loaded: false
       };
     }
   }

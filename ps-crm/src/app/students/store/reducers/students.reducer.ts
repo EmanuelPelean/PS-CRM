@@ -14,10 +14,12 @@ export function studentsReducer(
     }
 
     case fromActions.LOAD_STUDENTS_SUCCESS: {
+      const data = action.payload;
       return {
         ...state,
         loading: false,
         loaded: true,
+        data
       };
     }
 

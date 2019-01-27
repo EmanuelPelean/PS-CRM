@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import {Observable, of} from 'rxjs';
-import {Student} from '../models/student.model';
+import { Observable, of } from 'rxjs';
+import { Student } from '../models/student.model';
 
 @Injectable()
 export class StudentsService {
@@ -17,7 +17,7 @@ export class StudentsService {
       email: 'tom@me.com',
       program_type: 'Segment 1',
       course_time: 'Mon 8pm',
-      additional_comments: 'excited',
+      additional_comments: 'excited'
     }
   ];
 

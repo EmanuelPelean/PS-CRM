@@ -1,27 +1,22 @@
-import {Component, OnInit} from '@angular/core';
-import {Papa} from 'ngx-papaparse';
-import {StudentsStateMain} from '../../store/reducers';
-import {Store} from '@ngrx/store';
-import {Observable} from 'rxjs';
-import {Student} from '../../models/student.model';
-import {getAllStudents} from '../../store/selectors/students.selectors';
-import {StudentsService} from '../../services';
-import {LoadStudents} from '../../store/actions/students.actions';
+import { Component, OnInit } from '@angular/core';
+import { Papa } from 'ngx-papaparse';
+import { StudentsStateMain } from '../../store/reducers';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { Student } from '../../models/student.model';
+import { getAllStudents } from '../../store/selectors/students.selectors';
+import { StudentsService } from '../../services';
+import { LoadStudents } from '../../store/actions/students.actions';
 
-
-@Component ({
+@Component({
   selector: 'app-students',
   templateUrl: 'students.component.html',
   styleUrls: ['students.component.less']
 })
-
 export class StudentsComponent implements OnInit {
-
   students$: Observable<Student[]>;
 
-  constructor(private papa: Papa,
-              private store: Store<StudentsStateMain>) {
-  }
+  constructor(private papa: Papa, private store: Store<StudentsStateMain>) {}
 
   ngOnInit(): void {
     this.students$ = this.store.select(getAllStudents);

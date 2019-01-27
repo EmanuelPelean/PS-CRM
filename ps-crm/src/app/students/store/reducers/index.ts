@@ -7,5 +7,5 @@ export interface StudentsStateMain {
 }
 
 export const reducers: ActionReducerMap<StudentsStateMain> = {
-  students: fromStudentsReducers.studentsReducer,
+  students: fromStudentsReducers.studentsReducer
 };

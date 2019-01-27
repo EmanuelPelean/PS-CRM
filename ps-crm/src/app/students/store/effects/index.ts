@@ -1,5 +1,5 @@
-import {StudentsEffects} from './students.effects';
+import { StudentsEffects } from './students.effects';
 
-export const effects: any[] = [ StudentsEffects ];
+export const effects: any[] = [StudentsEffects];
 
 export * from './students.effects';

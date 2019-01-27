@@ -14,7 +14,7 @@ import { storeFreeze } from 'ngrx-store-freeze';
 // this would be done dynamically with webpack for builds
 const environment = {
   development: true,
-  production: false,
+  production: false
 };
 
 export const metaReducers: MetaReducer<any>[] = !environment.production
@@ -22,17 +22,15 @@ export const metaReducers: MetaReducer<any>[] = !environment.production
   : [];
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     StoreModule.forRoot({}, { metaReducers }),
     EffectsModule.forRoot([]),
-    environment.development ? StoreDevtoolsModule.instrument() : [],
+    environment.development ? StoreDevtoolsModule.instrument() : []
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

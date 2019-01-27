@@ -5,6 +5,8 @@ import {Store} from '@ngrx/store';
 import {Observable} from 'rxjs';
 import {Student} from '../../models/student.model';
 import {getAllStudents} from '../../store/selectors/students.selectors';
+import {StudentsService} from '../../services';
+import {LoadStudents} from '../../store/actions/students.actions';
 
 
 @Component ({
@@ -23,9 +25,7 @@ export class StudentsComponent implements OnInit {
 
   ngOnInit(): void {
     this.students$ = this.store.select(getAllStudents);
-    this.students$.pipe().subscribe(value => {
-      console.log('my value', value);
-    });
+    this.store.dispatch(new LoadStudents());
   }
 
   public convertFileInput(files: FileList) {

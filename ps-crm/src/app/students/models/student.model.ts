@@ -1,5 +1,5 @@
 
-export interface Student {
+export class Student {
   id?: number;
   date_submitted?: string;
   ip_address?: string;

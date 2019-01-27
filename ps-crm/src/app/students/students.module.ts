@@ -5,14 +5,18 @@ import {HttpClientModule} from '@angular/common/http';
 import {RouterModule, Routes} from '@angular/router';
 import {PapaParseModule} from 'ngx-papaparse';
 import {StoreModule} from '@ngrx/store';
+import {EffectsModule} from '@ngrx/effects';
 
-import { reducers } from './store/reducers';
+import { reducers, effects } from './store';
 
 // components
 import * as fromComponents from './components';
 
 // containers
 import * as fromContainers from './containers';
+
+// services
+import * as fromServices from './services';
 
 // routes
 export const ROUTES: Routes = [
@@ -30,8 +34,9 @@ export const ROUTES: Routes = [
     PapaParseModule,
     RouterModule.forChild(ROUTES),
     StoreModule.forFeature('StudentsMain', reducers),
+    EffectsModule.forFeature(effects),
   ],
-  providers: [],
+  providers: [...fromServices.services],
   declarations: [ ...fromComponents.components, ...fromContainers.containers],
   exports: [...fromComponents.components, ...fromContainers.containers],
 })

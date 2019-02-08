@@ -14,12 +14,12 @@ export class StudentsEffects {
   ) {}
 
   @Effect()
-  loadStudents$ = this.actions$.pipe(ofType(studentActions.LOAD_STUDENTS),
+  loadStudents$ = this.actions$.pipe(ofType(studentActions.StudentsActionTypes.LOAD_STUDENTS),
     switchMap(() => {
       return this.studentsService.getStudents().pipe(
         tap(val => console.log(val)),
-        map(students => new studentActions.LoadStudentsSuccess(students)),
-        catchError(error => of(new studentActions.LoadStudentsFail(error)))
+        map(students => new studentActions.LoadStudentsSuccessAction(students)),
+        catchError(error => of(new studentActions.LoadStudentsFailAction(error)))
       );
     }));
 }

@@ -2,26 +2,36 @@
 import { Action } from '@ngrx/store';
 import { Student } from '../../models/student.model';
 
-export const LOAD_STUDENTS = '[Students] Load Students';
-export const LOAD_STUDENTS_FAIL = '[Students] Load Students Fail';
-export const LOAD_STUDENTS_SUCCESS = '[Students] Load Students Success';
+export enum StudentsActionTypes {
+  LOAD_STUDENTS = '[Students] Load Students',
+  LOAD_STUDENTS_FAIL = '[Students] Load Students Fail',
+  LOAD_STUDENTS_SUCCESS = '[Students] Load Students Success',
+  ADD_STUDENTS = '[Students] Add Students'
+}
+export class LoadStudentsAction implements Action {
+  readonly type = StudentsActionTypes.LOAD_STUDENTS;
 
-export class LoadStudents implements Action {
-  readonly type = LOAD_STUDENTS;
 }
 
-export class LoadStudentsFail implements Action {
-  readonly type = LOAD_STUDENTS_FAIL;
+export class LoadStudentsFailAction implements Action {
+  readonly type = StudentsActionTypes.LOAD_STUDENTS_FAIL;
   constructor(public payload: any) {}
 }
 
-export class LoadStudentsSuccess implements Action {
-  readonly type = LOAD_STUDENTS_SUCCESS;
+export class LoadStudentsSuccessAction implements Action {
+  readonly type = StudentsActionTypes.LOAD_STUDENTS_SUCCESS;
   constructor(public payload: Student[]) {}
+}
+
+export class AddStudentsAction implements Action {
+  readonly type = StudentsActionTypes.ADD_STUDENTS;
+  constructor(public payload: { students: Student[] }) {}
 }
 
 // action types
 export type StudentsActions =
-  | LoadStudents
-  | LoadStudentsFail
-  | LoadStudentsSuccess;
+  | LoadStudentsAction
+  | LoadStudentsFailAction
+  | LoadStudentsSuccessAction
+  | AddStudentsAction;
+

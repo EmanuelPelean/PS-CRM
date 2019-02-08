@@ -4,9 +4,18 @@ import { StudentsStateMain } from '../../store/reducers';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { Student } from '../../models/student.model';
-import { getAllStudents } from '../../store/selectors/students.selectors';
+
+import {
+  getAllStudents,
+  getTotalStudents
+} from '../../store/selectors/students.selectors';
 import { StudentsService } from '../../services';
-import { LoadStudents } from '../../store/actions/students.actions';
+import {
+  AddStudentsAction,
+  LoadStudentsAction
+} from '../../store/actions/students.actions';
+import { tap } from 'rxjs/operators';
+
 
 @Component({
   selector: 'app-students',
@@ -19,8 +28,8 @@ export class StudentsComponent implements OnInit {
   constructor(private papa: Papa, private store: Store<StudentsStateMain>) {}
 
   ngOnInit(): void {
+    // this.store.dispatch(new LoadStudentsAction());
     this.students$ = this.store.select(getAllStudents);
-    this.store.dispatch(new LoadStudents());
   }
 
   public convertFileInput(files: FileList) {
@@ -34,8 +43,28 @@ export class StudentsComponent implements OnInit {
       reader.onload = () => {
         if (typeof reader.result === 'string') {
           const csv: string = reader.result;
-          const myWorld = this.papa.parse(csv);
-          myWorld.data = myWorld.data.slice(1, myWorld.data.length + 1);
+          const studentParseResult = this.papa.parse(csv);
+          studentParseResult.data = studentParseResult.data.slice(
+            1,
+            studentParseResult.data.length + 1
+          );
+          const studentList = [];
+           // TODO seek optimized conversion solution
+          studentParseResult.data.map(student => {
+            const newStudent = new Student();
+            const genId = Math.floor(Math.random() * (999 - 100 + 1) + 100);
+            newStudent.date_submitted = student[0];
+            newStudent.id = student[1] + genId;
+            newStudent.name_first = student[3];
+            newStudent.name_last = student[4];
+            newStudent.address = student[5];
+            newStudent.phone = student[6];
+            newStudent.email = student[7];
+            newStudent.program_type = student[8];
+            newStudent.course_time = student[9];
+            studentList.push(newStudent);
+          });
+          this.store.dispatch(new AddStudentsAction({ students: studentList }));
         }
       };
     }

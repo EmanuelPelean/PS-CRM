@@ -1,5 +1,5 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { StudentsState } from '../state/students.state';
+import { studentAdapter, StudentsState } from '../state/students.state';
 import { StudentsStateMain } from '../reducers';
 
 export const getStudentsStateMain = createFeatureSelector<StudentsStateMain>(
@@ -12,10 +12,26 @@ export const getStudentsState = createSelector(
   (state: StudentsStateMain) => state.students
 );
 
+export const {
+  selectIds,
+  selectEntities,
+  selectAll,
+  selectTotal
+} = studentAdapter.getSelectors();
+
 export const getAllStudents = createSelector(
   getStudentsState,
-  (state: StudentsState) => state.data
+  (state: StudentsState) => selectAll(state)
 );
+export const getStudentsIds = createSelector(
+  getStudentsState,
+  (state: StudentsState) => selectIds(state)
+);
+export const getTotalStudents = createSelector(
+  getStudentsState,
+  (state: StudentsState) => selectTotal(state)
+);
+
 export const getStudentsLoading = createSelector(
   getStudentsState,
   (state: StudentsState) => state.loading
@@ -23,4 +39,9 @@ export const getStudentsLoading = createSelector(
 export const getStudentsLoaded = createSelector(
   getStudentsState,
   (state: StudentsState) => state.loaded
+);
+
+export const getStudentById = (id: string) => createSelector(
+  getStudentsState,
+  (state: StudentsState) => state.entities[id]
 );

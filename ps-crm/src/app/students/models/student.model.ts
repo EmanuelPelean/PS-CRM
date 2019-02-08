@@ -1,4 +1,3 @@
-
 export class Student {
   id?: number;
   date_submitted?: string;

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import {Effect, Actions, ofType} from '@ngrx/effects';
+import { Effect, Actions, ofType } from '@ngrx/effects';
 import { of } from 'rxjs';
-import {map, switchMap, catchError, tap} from 'rxjs/operators';
+import { map, switchMap, catchError, tap } from 'rxjs/operators';
 
 import * as studentActions from '../actions/students.actions';
 import * as fromServices from '../../services';
@@ -21,5 +21,6 @@ export class StudentsEffects {
         map(students => new studentActions.LoadStudentsSuccessAction(students)),
         catchError(error => of(new studentActions.LoadStudentsFailAction(error)))
       );
-    }));
+    })
+  );
 }

@@ -1,6 +1,7 @@
 // load pizzas
 import { Action } from '@ngrx/store';
 import { Student } from '../../models/student.model';
+
 export enum StudentsActionTypes {
   LOAD_STUDENTS = '[Students] Load Students',
   LOAD_STUDENTS_FAIL = '[Students] Load Students Fail',
@@ -9,6 +10,7 @@ export enum StudentsActionTypes {
 }
 export class LoadStudentsAction implements Action {
   readonly type = StudentsActionTypes.LOAD_STUDENTS;
+
 }
 
 export class LoadStudentsFailAction implements Action {
@@ -32,3 +34,4 @@ export type StudentsActions =
   | LoadStudentsFailAction
   | LoadStudentsSuccessAction
   | AddStudentsAction;
+

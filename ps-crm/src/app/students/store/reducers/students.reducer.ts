@@ -32,7 +32,6 @@ export function studentsReducer(
     }
 
     case fromActions.StudentsActionTypes.ADD_STUDENTS: {
-      console.log('in reducer', action.payload.students.length);
       return studentAdapter.addAll(action.payload.students, state);
     }
   }

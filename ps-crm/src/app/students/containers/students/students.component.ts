@@ -35,9 +35,6 @@ export class StudentsComponent implements OnInit {
   public convertFileInput(files: FileList) {
     if (files && files.length > 0) {
       const file: File = files.item(0);
-      // console.log(file.name);
-      // console.log(file.size);
-      // console.log(file.type);
       const reader: FileReader = new FileReader();
       reader.readAsText(file);
       reader.onload = () => {

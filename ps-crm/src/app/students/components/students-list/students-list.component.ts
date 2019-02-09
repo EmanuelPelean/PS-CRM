@@ -1,5 +1,11 @@
-import {Component, Input} from '@angular/core';
-import {Student} from '../../models/student.model';
+import {
+  Component,
+  ElementRef,
+  HostListener,
+  Input,
+  ViewChild
+} from '@angular/core';
+import { Student } from '../../models/student.model';
 
 @Component({
   selector: 'app-students-list',
@@ -7,5 +13,14 @@ import {Student} from '../../models/student.model';
   styleUrls: ['students-list.component.less']
 })
 export class StudentsListComponent {
-  @Input() listData: Student[];
+  private listData: Student[];
+  @Input()
+  set studentsList(studentsList: Student[]) {
+    let convertArr = studentsList.slice(
+      studentsList.length - 50,
+      studentsList.length + 1
+    );
+    convertArr = convertArr.filter(student => student.date_submitted !== '');
+    this.listData = convertArr.reverse();
+  }
 }

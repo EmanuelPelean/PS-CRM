@@ -1,9 +1,22 @@
-<mat-selection-list #students>
-  <mat-list-option *ngFor="let student of listData">
-    {{student.date_submitted}} {{student.name_first}} {{student.name_last}}
-  </mat-list-option>
-</mat-selection-list>
+<p>Students selected: {{ students.selectedOptions.selected.length }}</p>
 
-<p>
-  Options selected: {{students.selectedOptions.selected.length}}
-</p>
+<div class="wrapper-list">
+  <ng-scrollbar
+    [invertX]="invertX"
+    [invertY]="invertY"
+    [trackX]="true"
+    [compact]="compact"
+    [shown]="shown"
+    [disableOnBreakpoints]="false"
+    [disabled]="disabled"
+  >
+    <div class="content-list">
+      <mat-selection-list #students>
+        <mat-list-option class="student-item" *ngFor="let student of listData">
+          {{ student.date_submitted }} {{ student.name_first }}
+          {{ student.name_last }}
+        </mat-list-option>
+      </mat-selection-list>
+    </div>
+  </ng-scrollbar>
+</div>

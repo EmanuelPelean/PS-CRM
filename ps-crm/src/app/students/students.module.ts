@@ -17,6 +17,7 @@ import * as fromContainers from './containers';
 
 // services
 import * as fromServices from './services';
+import {CustomMaterialModule} from './custom-material.module';
 
 // routes
 export const ROUTES: Routes = [
@@ -32,6 +33,7 @@ export const ROUTES: Routes = [
     ReactiveFormsModule,
     HttpClientModule,
     PapaParseModule,
+    CustomMaterialModule,
     RouterModule.forChild(ROUTES),
     StoreModule.forFeature('StudentsMain', reducers),
     EffectsModule.forFeature(effects)

@@ -1,0 +1,9 @@
+<mat-selection-list #students>
+  <mat-list-option *ngFor="let student of listData">
+    {{student.date_submitted}} {{student.name_first}} {{student.name_last}}
+  </mat-list-option>
+</mat-selection-list>
+
+<p>
+  Options selected: {{students.selectedOptions.selected.length}}
+</p>

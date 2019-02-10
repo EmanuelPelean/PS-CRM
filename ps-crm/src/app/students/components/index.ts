@@ -6,4 +6,4 @@ export const components: any[] = [FileInputComponent, StudentsListComponent, Stu
 
 export * from './file-input/file-input.component';
 export * from './students-list/students-list.component';
-export * from './students-table/students-table.component'
+export * from './students-table/students-table.component';

@@ -1,8 +1,10 @@
 import { NgModule } from '@angular/core';
 import {
-  MatButtonModule,
+  MatButtonModule, MatCardModule,
   MatCheckboxModule,
-  MatListModule
+  MatFormFieldModule, MatInputModule,
+  MatListModule, MatPaginatorModule,
+  MatTableModule
 } from '@angular/material';
 import { NgScrollbarModule } from 'ngx-scrollbar';
 
@@ -11,13 +13,23 @@ import { NgScrollbarModule } from 'ngx-scrollbar';
     MatButtonModule,
     MatCheckboxModule,
     MatListModule,
-    NgScrollbarModule
+    NgScrollbarModule,
+    MatTableModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatPaginatorModule,
+    MatCardModule
   ],
   exports: [
     MatButtonModule,
     MatCheckboxModule,
     MatListModule,
-    NgScrollbarModule
+    NgScrollbarModule,
+    MatTableModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatPaginatorModule,
+    MatCardModule
   ]
 })
 export class CustomMaterialModule {}

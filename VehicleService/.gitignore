@@ -90,3 +90,4 @@ nb-configuration.xml
 ## Misc
 ##########################
 credentials.java
+application.properties

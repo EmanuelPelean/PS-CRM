@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
@@ -24,7 +24,7 @@ export const ROUTES: Routes = [
   {
     path: '',
     component: fromContainers.StudentsComponent
-  }
+  },
 ];
 
 @NgModule({
@@ -34,6 +34,7 @@ export const ROUTES: Routes = [
     HttpClientModule,
     PapaParseModule,
     CustomMaterialModule,
+    FormsModule,
     RouterModule.forChild(ROUTES),
     StoreModule.forFeature('StudentsMain', reducers),
     EffectsModule.forFeature(effects)

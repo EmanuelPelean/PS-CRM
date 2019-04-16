@@ -13,6 +13,7 @@ import { storeFreeze } from 'ngrx-store-freeze';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatListModule } from '@angular/material';
 import { AuthModule } from './auth/auth.module';
+import {SharedModule} from './shared/shared.module';
 
 // this would be done dynamically with webpack for builds
 const environment = {
@@ -31,6 +32,7 @@ export const metaReducers: MetaReducer<any>[] = !environment.production
     AppRoutingModule,
     BrowserAnimationsModule,
     AuthModule,
+    SharedModule,
     StoreModule.forRoot({}, { metaReducers }),
     EffectsModule.forRoot([]),
     environment.development ? StoreDevtoolsModule.instrument() : []

@@ -46,7 +46,7 @@ export class StudentsComponent implements OnInit {
             studentParseResult.data.length + 1
           );
           const studentList = [];
-           // TODO seek optimized conversion solution
+          // TODO seek optimized conversion solution
           studentParseResult.data.map(student => {
             const newStudent = new Student();
             const genId = Math.floor(Math.random() * (999 - 100 + 1) + 100);

@@ -10,6 +10,6 @@
 </ng-template>
 <ng-template [ngIf]="authService.isAuthenticated()">
   <div style="text-align:center">
-    <h1>Logged In!</h1>
+    <button class="btn btn-danger" (click)="onLogout()">Logout</button>
   </div>
 </ng-template>

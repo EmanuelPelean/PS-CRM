@@ -1,13 +1,16 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {SignUpComponent} from './auth/components';
+import { SignInComponent, SignUpComponent } from './auth/components';
+import {AuthGuard} from './auth/services/auth-guard.service';
 
 export const routes: Routes = [
-  { path: '', redirectTo: 'students', pathMatch: 'full' },
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
   {
     path: 'students',
-    loadChildren: './students/students.module#StudentsModule'
+    loadChildren: './students/students.module#StudentsModule',
+    canActivate: [AuthGuard]
   },
+  { path: 'login', component: SignInComponent },
   { path: 'signup', component: SignUpComponent }
 ];
 

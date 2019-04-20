@@ -23,7 +23,7 @@ import {CustomMaterialModule} from './custom-material.module';
 export const ROUTES: Routes = [
   {
     path: '',
-    component: fromContainers.StudentsComponent
+    component: fromContainers.DashboardComponent
   },
 ];
 

@@ -1,0 +1,16 @@
+<div class="dashboard-container">
+  <mat-sidenav-container class="sidenav-container" [hasBackdrop]="'false'">
+    <mat-sidenav class="sidenav" #sidenav [mode]="'side'" [opened]="'true'">
+      <mat-nav-list>
+        <a mat-list-item routerLink=".">Test ITEM</a>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <div class="main-content">
+        <p>
+          <button class="toggle-button" mat-button (click)="sidenav.toggle()">Toggle</button>
+        </p>
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

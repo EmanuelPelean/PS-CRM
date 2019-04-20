@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { AuthService } from '../../../auth/services/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -7,9 +6,4 @@ import { AuthService } from '../../../auth/services/auth.service';
   styleUrls: ['./header.component.less']
 })
 export class HeaderComponent {
-  constructor(private authService: AuthService) {}
-
-  public onLogout(): void {
-    this.authService.logout();
-  }
 }

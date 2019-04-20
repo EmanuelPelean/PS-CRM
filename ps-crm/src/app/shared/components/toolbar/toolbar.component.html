@@ -1,0 +1,12 @@
+<mat-toolbar class="main-toolbar" color="primary">
+  <span>PS CRM</span>
+
+  <!-- This fills the remaining space of the current row -->
+  <span class="example-fill-remaining-space"></span>
+
+  <ng-template [ngIf]="authService.isAuthenticated()">
+    <div style="text-align:center">
+      <button class="btn btn-danger" (click)="onLogout()">Logout</button>
+    </div>
+  </ng-template>
+</mat-toolbar>

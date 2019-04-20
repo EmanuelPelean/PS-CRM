@@ -23,7 +23,7 @@ export class AuthService {
       .auth()
       .signInWithEmailAndPassword(email, password)
       .then(() => {
-        this.router.navigate(['/']),
+        this.router.navigate(['/students']),
           firebase
             .auth()
             .currentUser.getIdToken()

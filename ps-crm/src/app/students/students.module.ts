@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
@@ -17,14 +17,20 @@ import * as fromContainers from './containers';
 
 // services
 import * as fromServices from './services';
-import {CustomMaterialModule} from './custom-material.module';
+import { CustomMaterialModule } from './custom-material.module';
 
 // routes
 export const ROUTES: Routes = [
   {
     path: '',
-    component: fromContainers.StudentsComponent
-  },
+    component: fromContainers.StudentsComponent,
+    children: [
+      {
+        path: 'registration',
+        component: fromContainers.RegistrationComponent
+      }
+    ]
+  }
 ];
 
 @NgModule({

@@ -1,0 +1,139 @@
+<button mat-raised-button (click)="isLinear = !isLinear" id="toggle-linear">
+  {{ !isLinear ? 'Enable linear mode' : 'Disable linear mode' }}
+</button>
+<mat-vertical-stepper [linear]="isLinear" #stepper>
+  <mat-step [stepControl]="firstFormGroup">
+    <form [formGroup]="firstFormGroup">
+      <ng-template matStepLabel>Student Info</ng-template>
+      <div class="student-name-container">
+        <mat-form-field class="form-spacing">
+          <input
+            matInput
+            placeholder="First Name"
+            formControlName="first_name"
+            required
+            type="text"
+          />
+        </mat-form-field>
+        <mat-form-field class="form-spacing">
+          <input
+            matInput
+            placeholder="Middle Name"
+            formControlName="middle_name"
+            type="text"
+          />
+        </mat-form-field>
+        <mat-form-field class="form-spacing">
+          <input
+            matInput
+            placeholder="Last Name"
+            formControlName="last_name"
+            required
+            type="text"
+          />
+        </mat-form-field>
+      </div>
+      <mat-form-field class="form-spacing">
+        <input
+          matInput
+          [matDatepicker]="picker"
+          placeholder="Date of Birth"
+          formControlName="birth_date"
+          required
+          type="text"
+        />
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+      <div>
+        <mat-form-field class="form-spacing">
+          <input
+            matInput
+            placeholder="Street Address"
+            formControlName="address_street"
+            required
+          />
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field class="form-spacing">
+          <input
+            matInput
+            placeholder="City"
+            formControlName="address_city"
+            required
+            type="text"
+          />
+        </mat-form-field>
+        <mat-form-field class="form-spacing">
+          <input
+            matInput
+            placeholder="State"
+            formControlName="address_state"
+            required
+            type="text"
+          />
+        </mat-form-field>
+        <mat-form-field class="form-spacing">
+          <input
+            matInput
+            placeholder="Zip Code"
+            formControlName="address_zip"
+            required
+            type="number"
+            maxlength="5"
+          />
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field class="form-spacing">
+          <input
+            matInput
+            placeholder="Cell Phone #"
+            formControlName="phone_cell"
+            required
+            type="tel"
+          />
+          <mat-hint align="end">Example: 586-739-7393</mat-hint>
+        </mat-form-field>
+        <mat-form-field class="form-spacing">
+          <input
+            matInput
+            placeholder="email"
+            formControlName="email"
+            required
+            type="email"
+          />
+        </mat-form-field>
+      </div>
+      <div>
+        <button mat-button matStepperNext type="button">Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="secondFormGroup">
+    <form [formGroup]="secondFormGroup">
+      <ng-template matStepLabel>Step 2</ng-template>
+      <mat-form-field>
+        <input
+          matInput
+          placeholder="License #"
+          formControlName="secondCtrl"
+          required
+        />
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperPrevious type="button">Back</button>
+        <button mat-button matStepperNext type="button">Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Done</ng-template>
+    You are now done.
+    <div>
+      <button mat-button matStepperPrevious type="button">Back</button>
+      <button mat-button (click)="stepper.reset()">Reset</button>
+    </div>
+  </mat-step>
+</mat-vertical-stepper>

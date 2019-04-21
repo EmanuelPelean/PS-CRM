@@ -1,2 +1,29 @@
-<app-file-input (fileReceived)="convertFileInput($event)"> </app-file-input>
-<app-students-table [studentsSource$]="students$"></app-students-table>
+<!--<app-file-input (fileReceived)="convertFileInput($event)"> </app-file-input>-->
+<!--<app-students-table [studentsSource$]="students$"></app-students-table>-->
+<div class="students-container">
+  <mat-sidenav-container class="sidenav-container" [hasBackdrop]="'false'">
+    <mat-sidenav class="sidenav" #sidenav [mode]="'side'" [opened]="'true'">
+      <mat-nav-list>
+        <a
+          mat-list-item
+          routerLinkActive="active"
+          [routerLink]="menuItem.path"
+          *ngFor="let menuItem of menuItems"
+          class="{{ menuItem.class }}"
+          ><mat-icon>{{ menuItem.icon }}</mat-icon
+          >{{ menuItem.title }}</a
+        >
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content class="side-nav-cont">
+      <div class="main-content">
+        <p>
+          <button class="toggle-button" mat-button (click)="sidenav.toggle()">
+            Toggle
+          </button>
+        </p>
+        <router-outlet></router-outlet>
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

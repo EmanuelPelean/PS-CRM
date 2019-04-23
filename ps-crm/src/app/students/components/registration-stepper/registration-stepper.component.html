@@ -19,6 +19,7 @@
           <input
             matInput
             placeholder="Middle Name"
+            value="N/A"
             formControlName="middle_name"
             type="text"
           />
@@ -33,18 +34,35 @@
           />
         </mat-form-field>
       </div>
-      <mat-form-field class="form-spacing">
-        <input
-          matInput
-          [matDatepicker]="picker"
-          placeholder="Date of Birth"
-          formControlName="birth_date"
-          required
-          type="text"
-        />
-        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
-      </mat-form-field>
+      <div>
+        <mat-form-field class="form-spacing">
+          <input
+            matInput
+            [matDatepicker]="picker"
+            placeholder="Date of Birth"
+            formControlName="birth_date"
+            required
+            type="text"
+          />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="picker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+        <label id="sex-radio-label">Select Gender</label>
+        <mat-radio-group
+          formControlName="sex"
+          aria-labelledby="sex-radio-label"
+        >
+          <mat-radio-button class="form-spacing" value="male"
+            >Male</mat-radio-button
+          >
+          <mat-radio-button class="form-spacing" value="female"
+            >Female</mat-radio-button
+          >
+        </mat-radio-group>
+      </div>
       <div>
         <mat-form-field class="form-spacing">
           <input
@@ -69,6 +87,7 @@
           <input
             matInput
             placeholder="State"
+            value="MI"
             formControlName="address_state"
             required
             type="text"
@@ -107,29 +126,165 @@
         </mat-form-field>
       </div>
       <div>
-        <button mat-button matStepperNext type="button">Next</button>
+        <button mat-button matStepperNext type="button">
+          Next
+        </button>
       </div>
     </form>
   </mat-step>
   <mat-step [stepControl]="secondFormGroup">
     <form [formGroup]="secondFormGroup">
-      <ng-template matStepLabel>Step 2</ng-template>
-      <mat-form-field>
-        <input
-          matInput
-          placeholder="License #"
-          formControlName="secondCtrl"
-          required
-        />
-      </mat-form-field>
+      <ng-template matStepLabel>Permit Info</ng-template>
+      <div>
+        <mat-form-field class="form-spacing">
+          <input
+            matInput
+            [matDatepicker]="picker_permit_issue"
+            placeholder="Permit Issue Date"
+            formControlName="permit_issued"
+            type="text"
+          />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="picker_permit_issue"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker_permit_issue></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field class="form-spacing">
+          <input
+            matInput
+            [matDatepicker]="picker_permit_expiry"
+            placeholder="Permit Expiration Date"
+            formControlName="permit_expiry"
+            type="text"
+          />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="picker_permit_expiry"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker_permit_expiry></mat-datepicker>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field class="form-spacing">
+          <input
+            matInput
+            placeholder="License Number"
+            formControlName="license_num"
+            minlength="13"
+            maxlength="13"
+            type="text"
+          />
+          <mat-hint align="end">Example: A 344 958 494 303</mat-hint>
+        </mat-form-field>
+        <label class="form-spacing" id="license-type-label">License Type</label>
+        <mat-checkbox
+          class="form-spacing"
+          aria-labelledby="license-type-label"
+          formControlName="license_type_o"
+          >O</mat-checkbox
+        >
+        <mat-checkbox class="form-spacing" formControlName="license_type_a"
+          >A</mat-checkbox
+        >
+        <mat-checkbox class="form-spacing" formControlName="license_type_b"
+          >B</mat-checkbox
+        >
+        <mat-checkbox class="form-spacing" formControlName="license_type_c"
+          >C</mat-checkbox
+        >
+      </div>
+      <label class="form-spacing" id="endorsement-type-label"
+        >Endorsements</label
+      >
+      <div>
+        <mat-checkbox
+          class="form-spacing"
+          aria-labelledby="endorsement-type-label"
+          formControlName="endorsement_h"
+          >H</mat-checkbox
+        >
+        <mat-checkbox class="form-spacing" formControlName="endorsement_n"
+          >N</mat-checkbox
+        >
+        <mat-checkbox class="form-spacing" formControlName="endorsement_p"
+          >P</mat-checkbox
+        >
+        <mat-checkbox class="form-spacing" formControlName="endorsement_s"
+          >S</mat-checkbox
+        >
+        <mat-checkbox class="form-spacing" formControlName="endorsement_t"
+          >T</mat-checkbox
+        >
+        <mat-checkbox class="form-spacing" formControlName="endorsement_x"
+          >X</mat-checkbox
+        >
+        <mat-checkbox class="form-spacing" formControlName="endorsement_none"
+          >None</mat-checkbox
+        >
+      </div>
+      <label class="form-spacing" id="restriction-type-label"
+        >Restrictions</label
+      >
+      <div>
+        <mat-checkbox
+          class="form-spacing"
+          aria-labelledby="restriction-type-label"
+          formControlName="restriction_e"
+          >E</mat-checkbox
+        >
+        <mat-checkbox class="form-spacing" formControlName="restriction_k"
+          >K</mat-checkbox
+        >
+        <mat-checkbox class="form-spacing" formControlName="restriction_l"
+          >L</mat-checkbox
+        >
+        <mat-checkbox class="form-spacing" formControlName="restriction_m"
+          >M</mat-checkbox
+        >
+        <mat-checkbox class="form-spacing" formControlName="restriction_n"
+          >N</mat-checkbox
+        >
+        <mat-checkbox class="form-spacing" formControlName="restriction_o"
+          >O</mat-checkbox
+        >
+        <mat-checkbox class="form-spacing" formControlName="restriction_p"
+          >P</mat-checkbox
+        >
+        <mat-checkbox class="form-spacing" formControlName="restriction_v"
+          >V</mat-checkbox
+        >
+        <mat-checkbox class="form-spacing" formControlName="restriction_x"
+          >X</mat-checkbox
+        >
+        <mat-checkbox class="form-spacing" formControlName="restriction_z"
+          >Z</mat-checkbox
+        >
+        <mat-checkbox class="form-spacing" formControlName="restriction_none"
+          >None</mat-checkbox
+        >
+      </div>
       <div>
         <button mat-button matStepperPrevious type="button">Back</button>
-        <button mat-button matStepperNext type="button">Next</button>
+        <button mat-button matStepperNext type="button">
+          Next
+        </button>
       </div>
     </form>
   </mat-step>
   <mat-step>
-    <ng-template matStepLabel>Done</ng-template>
+    <form [formGroup]="thirdFormGroup">
+      <ng-template matStepLabel>Upload Documents</ng-template>
+      <div>
+        <button mat-button matStepperPrevious type="button">Back</button>
+        <button mat-button matStepperNext type="button">
+          Next
+        </button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Review Info</ng-template>
     You are now done.
     <div>
       <button mat-button matStepperPrevious type="button">Back</button>

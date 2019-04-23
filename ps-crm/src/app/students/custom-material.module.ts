@@ -10,6 +10,7 @@ import {
   MatListModule,
   MatNativeDateModule,
   MatPaginatorModule,
+  MatRadioModule,
   MatRippleModule,
   MatSelectModule,
   MatSidenavModule,
@@ -37,7 +38,8 @@ import { NgScrollbarModule } from 'ngx-scrollbar';
     MatTooltipModule,
     MatStepperModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatRadioModule
   ],
   exports: [
     MatButtonModule,
@@ -56,7 +58,8 @@ import { NgScrollbarModule } from 'ngx-scrollbar';
     MatTooltipModule,
     MatStepperModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatRadioModule
   ]
 })
 export class CustomMaterialModule {}

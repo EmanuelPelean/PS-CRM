@@ -272,7 +272,7 @@
       </div>
     </form>
   </mat-step>
-  <mat-step>
+  <mat-step [stepControl]="thirdFormGroup">
     <form [formGroup]="thirdFormGroup">
       <ng-template matStepLabel>Upload Documents</ng-template>
       <div>

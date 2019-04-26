@@ -7,7 +7,7 @@ import * as fromComponents from './components';
 import * as fromContainers from './containers';
 import { FormsModule } from '@angular/forms';
 
-// services
+// store-services
 import * as fromServices from './services';
 
 @NgModule({

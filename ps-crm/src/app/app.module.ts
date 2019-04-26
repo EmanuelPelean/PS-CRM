@@ -11,7 +11,10 @@ import { MatListModule } from '@angular/material';
 import { AuthModule } from './auth/auth.module';
 import { SharedModule } from './shared/shared.module';
 import { AngularFireModule } from '@angular/fire';
-import { AngularFirestoreModule } from '@angular/fire/firestore';
+import {
+  AngularFirestoreModule,
+  FirestoreSettingsToken
+} from '@angular/fire/firestore';
 import { config } from './auth/firebase-config';
 
 // this would be done dynamically with webpack for builds
@@ -38,7 +41,7 @@ export const metaReducers: MetaReducer<any>[] = !environment.production
     EffectsModule.forRoot([]),
     environment.development ? StoreDevtoolsModule.instrument() : []
   ],
-  providers: [],
+  providers: [{ provide: FirestoreSettingsToken, useValue: {} }],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

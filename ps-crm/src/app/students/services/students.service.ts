@@ -1,8 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { Student } from '../models/student.model';
+import { AngularFirestore } from '@angular/fire/firestore';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class StudentsService {
   studentsRoster: Student[] = [
     {
@@ -21,7 +24,13 @@ export class StudentsService {
     }
   ];
 
+  constructor(private firestore: AngularFirestore) {}
+
   public getStudents(): Observable<Student[]> {
     return of(this.studentsRoster);
+  }
+
+  public registerStudent() {
+    console.log();
   }
 }

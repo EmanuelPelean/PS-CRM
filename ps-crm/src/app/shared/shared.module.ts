@@ -9,13 +9,13 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import {MatToolbarModule} from '@angular/material';
 
-// services
-// import * as fromServices from './services';
+// store-services
+// import * as fromServices from './store-services';
 
 @NgModule({
   imports: [FormsModule, CommonModule, MatToolbarModule],
   declarations: [...fromComponents.components, ...fromContainers.containers],
   exports: [...fromComponents.components, ...fromContainers.containers]
-  // providers: [...fromServices.services]
+  // providers: [...fromServices.store-services]
 })
 export class SharedModule {}

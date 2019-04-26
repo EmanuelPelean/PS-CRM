@@ -1,9 +1,14 @@
 <mat-card class="registration-card">
   <mat-card-header>
     <mat-card-title>Student Registration</mat-card-title>
-    <mat-card-subtitle>Please complete the following steps to register a new student.</mat-card-subtitle>
+    <mat-card-subtitle
+      >Please complete the following steps to register a new
+      student.</mat-card-subtitle
+    >
   </mat-card-header>
   <mat-card-content>
-    <app-registration-stepper></app-registration-stepper>
+    <app-registration-stepper
+      (OnCreateUserEvent)="onCreateUser($event)"
+    ></app-registration-stepper>
   </mat-card-content>
 </mat-card>

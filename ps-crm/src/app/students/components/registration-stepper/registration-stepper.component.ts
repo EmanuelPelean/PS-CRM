@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { RegistrationOneModel } from '../../models/registrationOne.model';
+import { RegistrationTwoModel } from '../../models/registrationTwo.model';
 
 @Component({
   selector: 'app-registration-stepper',
@@ -11,6 +13,12 @@ export class RegistrationStepperComponent implements OnInit {
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
   thirdFormGroup: FormGroup;
+
+  @Output()
+  OnCreateUserEvent = new EventEmitter<{
+    firstForm: RegistrationOneModel;
+    secondForm: RegistrationTwoModel;
+  }>();
 
   constructor(private _formBuilder: FormBuilder) {}
 
@@ -56,5 +64,12 @@ export class RegistrationStepperComponent implements OnInit {
       restriction_none: ['']
     });
     this.thirdFormGroup = this._formBuilder.group({});
+  }
+
+  public onCreateUser() {
+    const firstForm: RegistrationOneModel = this.firstFormGroup.value;
+    const secondForm: RegistrationTwoModel = this.secondFormGroup.value;
+
+    this.OnCreateUserEvent.emit({ firstForm, secondForm });
   }
 }

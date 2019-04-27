@@ -1,16 +1,22 @@
 // load pizzas
 import { Action } from '@ngrx/store';
 import { Student } from '../../models/student.model';
+import { FormGroup } from '@angular/forms';
+import { RegistrationOneModel } from '../../models/registrationOne.model';
+import { RegistrationTwoModel } from '../../models/registrationTwo.model';
+import { User } from 'firebase';
 
 export enum StudentsActionTypes {
   LOAD_STUDENTS = '[Students] Load Students',
   LOAD_STUDENTS_FAIL = '[Students] Load Students Fail',
   LOAD_STUDENTS_SUCCESS = '[Students] Load Students Success',
-  ADD_STUDENTS = '[Students] Add Students'
+  ADD_STUDENTS = '[Students] Add Students',
+  STUDENTS_CREATE_USER_REQUEST = '[Students] Create User Request',
+  STUDENTS_CREATE_USER_SUCCESS = '[Students] Create User Success',
+  STUDENTS_CREATE_USER_FAIL = '[Students] Create User Fail'
 }
 export class LoadStudentsAction implements Action {
   readonly type = StudentsActionTypes.LOAD_STUDENTS;
-
 }
 
 export class LoadStudentsFailAction implements Action {
@@ -28,10 +34,32 @@ export class AddStudentsAction implements Action {
   constructor(public payload: { students: Student[] }) {}
 }
 
+export class StudentsCreateUserRequestAction implements Action {
+  readonly type = StudentsActionTypes.STUDENTS_CREATE_USER_REQUEST;
+  constructor(
+    public payload: {
+      firstForm: RegistrationOneModel;
+      secondForm: RegistrationTwoModel;
+    }
+  ) {}
+}
+
+export class StudentsCreateUserSuccessAction implements Action {
+  readonly type = StudentsActionTypes.STUDENTS_CREATE_USER_SUCCESS;
+  constructor(public payload: { user: string }) {}
+}
+
+export class StudentsCreateUserFailAction implements Action {
+  readonly type = StudentsActionTypes.STUDENTS_CREATE_USER_FAIL;
+  constructor(public payload: { error: string }) {}
+}
+
 // action types
 export type StudentsActions =
   | LoadStudentsAction
   | LoadStudentsFailAction
   | LoadStudentsSuccessAction
-  | AddStudentsAction;
-
+  | AddStudentsAction
+  | StudentsCreateUserRequestAction
+  | StudentsCreateUserSuccessAction
+  | StudentsCreateUserFailAction;

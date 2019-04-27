@@ -6,6 +6,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { PapaParseModule } from 'ngx-papaparse';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
+import { CustomMaterialModule } from './custom-material.module';
+
 
 import { reducers, effects } from './store';
 
@@ -15,9 +17,8 @@ import * as fromComponents from './components';
 // containers
 import * as fromContainers from './containers';
 
-// services
+// store-services
 import * as fromServices from './services';
-import { CustomMaterialModule } from './custom-material.module';
 
 // routes
 export const ROUTES: Routes = [

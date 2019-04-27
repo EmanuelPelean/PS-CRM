@@ -1,9 +1,10 @@
 // load pizzas
 import { Action } from '@ngrx/store';
 import { Student } from '../../models/student.model';
-import {FormGroup} from '@angular/forms';
-import {RegistrationOneModel} from '../../models/registrationOne.model';
-import {RegistrationTwoModel} from '../../models/registrationTwo.model';
+import { FormGroup } from '@angular/forms';
+import { RegistrationOneModel } from '../../models/registrationOne.model';
+import { RegistrationTwoModel } from '../../models/registrationTwo.model';
+import { User } from 'firebase';
 
 export enum StudentsActionTypes {
   LOAD_STUDENTS = '[Students] Load Students',
@@ -16,7 +17,6 @@ export enum StudentsActionTypes {
 }
 export class LoadStudentsAction implements Action {
   readonly type = StudentsActionTypes.LOAD_STUDENTS;
-
 }
 
 export class LoadStudentsFailAction implements Action {
@@ -36,14 +36,17 @@ export class AddStudentsAction implements Action {
 
 export class StudentsCreateUserRequestAction implements Action {
   readonly type = StudentsActionTypes.STUDENTS_CREATE_USER_REQUEST;
-  constructor(public payload: {
-      firstForm: RegistrationOneModel,
-      secondForm: RegistrationTwoModel
-    }) {}
+  constructor(
+    public payload: {
+      firstForm: RegistrationOneModel;
+      secondForm: RegistrationTwoModel;
+    }
+  ) {}
 }
 
 export class StudentsCreateUserSuccessAction implements Action {
   readonly type = StudentsActionTypes.STUDENTS_CREATE_USER_SUCCESS;
+  constructor(public payload: { user: string }) {}
 }
 
 export class StudentsCreateUserFailAction implements Action {
@@ -60,4 +63,3 @@ export type StudentsActions =
   | StudentsCreateUserRequestAction
   | StudentsCreateUserSuccessAction
   | StudentsCreateUserFailAction;
-

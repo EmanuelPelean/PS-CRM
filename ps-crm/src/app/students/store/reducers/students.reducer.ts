@@ -34,6 +34,15 @@ export function studentsReducer(
     case fromActions.StudentsActionTypes.ADD_STUDENTS: {
       return studentAdapter.addAll(action.payload.students, state);
     }
+
+    case fromActions.StudentsActionTypes.STUDENTS_CREATE_USER_SUCCESS: {
+      const payload = action.payload;
+      return {
+        ...state,
+        lastCreatedUser: payload.user
+      };
+    }
   }
+
   return state;
 }

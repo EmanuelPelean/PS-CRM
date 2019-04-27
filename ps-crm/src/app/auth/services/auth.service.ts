@@ -1,6 +1,8 @@
 import * as firebase from 'firebase';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { from, Observable, of } from 'rxjs';
+import { User } from 'firebase';
 
 @Injectable({
   providedIn: 'root'
@@ -10,12 +12,17 @@ export class AuthService {
 
   constructor(private router: Router) {}
 
-  public signupUser(email: string, password: string): void {
-    firebase
-      .auth()
-      .createUserWithEmailAndPassword(email, password)
-      .then(res => console.log(res))
-      .catch(error => console.log(error));
+  public signupUser(
+    email: string,
+    password: string
+  ): Observable<User> | Observable<string> {
+    return from(
+      firebase
+        .auth()
+        .createUserWithEmailAndPassword(email, password)
+        .then(res => res.user)
+        .catch(error => error)
+    );
   }
 
   public loginUser(email: string, password: string): void {

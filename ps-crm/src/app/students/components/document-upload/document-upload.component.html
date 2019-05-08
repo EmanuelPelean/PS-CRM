@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="card">
+    <div class="card-header">
+      Please upload copies of the following documents:
+    </div>
+    <div class="card-body">
+      <div class="upload-element">
+        <h5 class="card-title">CDL Permit:</h5>
+        <input
+          type="file"
+          (change)="uploadPermit($event)"
+          accept=".png,.jpg,.pdf"
+        />
+        <div class="progress">
+          <div
+            class="progress-bar progress-bar-striped bg-success"
+            role="progressbar"
+            [style.width]="(permitUploadProgress$$$ | async) + '%'"
+            [attr.aria-valuenow]="permitUploadProgress$$$ | async"
+            aria-valuemin="0"
+            aria-valuemax="100"
+          ></div>
+        </div>
+      </div>
+      <div class="upload-element">
+        <h5 class="card-title">DOT Medical Certificate:</h5>
+        <input
+          type="file"
+          (change)="uploadMedical($event)"
+          accept=".png,.jpg,.pdf"
+        />
+        <div class="progress">
+          <div
+            class="progress-bar progress-bar-striped bg-success"
+            role="progressbar"
+            [style.width]="(medicalUploadProgress$$$ | async) + '%'"
+            [attr.aria-valuenow]="medicalUploadProgress$$$ | async"
+            aria-valuemin="0"
+            aria-valuemax="100"
+          ></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

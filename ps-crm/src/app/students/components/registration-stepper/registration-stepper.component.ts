@@ -1,7 +1,8 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { RegistrationOneModel } from '../../models/registrationOne.model';
 import { RegistrationTwoModel } from '../../models/registrationTwo.model';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-registration-stepper',
@@ -14,11 +15,23 @@ export class RegistrationStepperComponent implements OnInit {
   secondFormGroup: FormGroup;
   thirdFormGroup: FormGroup;
 
+  @Input()
+  permitUploadProgress$$: Observable<number>;
+
+  @Input()
+  medicalUploadProgress$$: Observable<number>;
+
   @Output()
   OnCreateUserEvent = new EventEmitter<{
     firstForm: RegistrationOneModel;
     secondForm: RegistrationTwoModel;
   }>();
+
+  @Output()
+  uploadPermit = new EventEmitter<File>();
+
+  @Output()
+  uploadMedical = new EventEmitter<File>();
 
   constructor(private _formBuilder: FormBuilder) {}
 
@@ -71,5 +84,13 @@ export class RegistrationStepperComponent implements OnInit {
     const secondForm: RegistrationTwoModel = this.secondFormGroup.value;
 
     this.OnCreateUserEvent.emit({ firstForm, secondForm });
+  }
+
+  public onUploadPermit(file: File) {
+    this.uploadPermit.emit(file);
+  }
+
+  public onUploadMedical(file: File) {
+    this.uploadMedical.emit(file);
   }
 }

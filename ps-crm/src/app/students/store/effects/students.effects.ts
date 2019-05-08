@@ -1,20 +1,30 @@
 import { Injectable } from '@angular/core';
 import { Effect, Actions, ofType } from '@ngrx/effects';
 import { from, of } from 'rxjs';
-import { map, switchMap, catchError, tap, concatMap } from 'rxjs/operators';
-
+import {
+  map,
+  switchMap,
+  catchError,
+  tap,
+  concatMap,
+  withLatestFrom
+} from 'rxjs/operators';
 import * as studentActions from '../actions/students.actions';
-import * as fromServices from '../../services';
 import { RegistrationOneModel } from '../../models/registrationOne.model';
 import { RegistrationTwoModel } from '../../models/registrationTwo.model';
 import { AuthService } from '../../../auth/services/auth.service';
 import { User } from 'firebase';
+import { StudentsService } from '../../services';
+import { select, Store } from '@ngrx/store';
+import { StudentsStateMain } from '../reducers';
+import { getLastCreatedUserId } from '../selectors/students.selectors';
 
 @Injectable()
 export class StudentsEffects {
   constructor(
     private actions$: Actions,
-    private studentsService: fromServices.StudentsService,
+    private store: Store<StudentsStateMain>,
+    private studentsService: StudentsService,
     private authService: AuthService
   ) {}
 
@@ -72,6 +82,28 @@ export class StudentsEffects {
             of(new studentActions.StudentsCreateUserFailAction(error))
           )
         )
+    )
+  );
+
+  @Effect()
+  updateFileURL$ = this.actions$.pipe(
+    ofType<studentActions.UpdateDocURLRequestAction>(
+      studentActions.StudentsActionTypes.STUDENTS_UPDATE_DOC_URL_REQUEST
+    ),
+    map((action: studentActions.UpdateDocURLRequestAction) => action.payload),
+    tap(x => console.log(x)),
+    withLatestFrom(
+      this.store.pipe(select(state => getLastCreatedUserId(state)))
+    ),
+    switchMap(([payload, userId]) =>
+      from(
+        this.studentsService.updateDocURL(payload.fileUrl, userId).pipe(
+          concatMap(() => [new studentActions.UpdateDocURLSuccessAction()]),
+          catchError(err =>
+            of(new studentActions.UpdateDocURLFailAction({ err }))
+          )
+        )
+      )
     )
   );
 }

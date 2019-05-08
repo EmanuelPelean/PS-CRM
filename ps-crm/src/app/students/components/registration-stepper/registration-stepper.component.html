@@ -266,7 +266,12 @@
       </div>
       <div>
         <button mat-button matStepperPrevious type="button">Back</button>
-        <button mat-button matStepperNext type="button" (click)="onCreateUser()">
+        <button
+          mat-button
+          matStepperNext
+          type="button"
+          (click)="onCreateUser()"
+        >
           Next
         </button>
       </div>
@@ -275,6 +280,12 @@
   <mat-step [stepControl]="thirdFormGroup">
     <form [formGroup]="thirdFormGroup">
       <ng-template matStepLabel>Upload Documents</ng-template>
+      <app-document-upload
+        (uploadPermitEvent)="onUploadPermit($event)"
+        (uploadMedicalEvent)="onUploadMedical($event)"
+        [permitUploadProgress$$$]="permitUploadProgress$$"
+        [medicalUploadProgress$$$]="medicalUploadProgress$$"
+      ></app-document-upload>
       <div>
         <button mat-button matStepperPrevious type="button">Back</button>
         <button mat-button matStepperNext type="button">

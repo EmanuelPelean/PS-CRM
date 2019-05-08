@@ -36,6 +36,7 @@ export const getStudentsLoading = createSelector(
   getStudentsState,
   (state: StudentsState) => state.loading
 );
+
 export const getStudentsLoaded = createSelector(
   getStudentsState,
   (state: StudentsState) => state.loaded
@@ -44,4 +45,9 @@ export const getStudentsLoaded = createSelector(
 export const getStudentById = (id: string) => createSelector(
   getStudentsState,
   (state: StudentsState) => state.entities[id]
+);
+
+export const getLastCreatedUserId = createSelector(
+  getStudentsState,
+  (state: StudentsState) => state.lastCreatedUserId
 );

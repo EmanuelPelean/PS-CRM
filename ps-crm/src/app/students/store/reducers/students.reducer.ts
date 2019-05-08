@@ -39,7 +39,7 @@ export function studentsReducer(
       const payload = action.payload;
       return {
         ...state,
-        lastCreatedUser: payload.user
+        lastCreatedUserId: payload.user
       };
     }
   }

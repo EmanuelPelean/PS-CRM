@@ -1,4 +1,3 @@
-// load pizzas
 import { Action } from '@ngrx/store';
 import { Student } from '../../models/student.model';
 import { FormGroup } from '@angular/forms';
@@ -13,7 +12,10 @@ export enum StudentsActionTypes {
   ADD_STUDENTS = '[Students] Add Students',
   STUDENTS_CREATE_USER_REQUEST = '[Students] Create User Request',
   STUDENTS_CREATE_USER_SUCCESS = '[Students] Create User Success',
-  STUDENTS_CREATE_USER_FAIL = '[Students] Create User Fail'
+  STUDENTS_CREATE_USER_FAIL = '[Students] Create User Fail',
+  STUDENTS_UPDATE_DOC_URL_REQUEST = '[Students] Update Doc Url Request',
+  STUDENTS_UPDATE_DOC_URL_SUCCESS = '[Students] Update Doc Url Success',
+  STUDENTS_UPDATE_DOC_URL_FAIL = '[Students] Update Doc Url Fail'
 }
 export class LoadStudentsAction implements Action {
   readonly type = StudentsActionTypes.LOAD_STUDENTS;
@@ -32,6 +34,20 @@ export class LoadStudentsSuccessAction implements Action {
 export class AddStudentsAction implements Action {
   readonly type = StudentsActionTypes.ADD_STUDENTS;
   constructor(public payload: { students: Student[] }) {}
+}
+
+export class UpdateDocURLRequestAction implements Action {
+  readonly type = StudentsActionTypes.STUDENTS_UPDATE_DOC_URL_REQUEST;
+  constructor(public payload: { fileUrl: any }) {}
+}
+
+export class UpdateDocURLSuccessAction implements Action {
+  readonly type = StudentsActionTypes.STUDENTS_UPDATE_DOC_URL_SUCCESS;
+}
+
+export class UpdateDocURLFailAction implements Action {
+  readonly type = StudentsActionTypes.STUDENTS_UPDATE_DOC_URL_FAIL;
+  constructor(public payload: { err: string }) {}
 }
 
 export class StudentsCreateUserRequestAction implements Action {
@@ -62,4 +78,7 @@ export type StudentsActions =
   | AddStudentsAction
   | StudentsCreateUserRequestAction
   | StudentsCreateUserSuccessAction
-  | StudentsCreateUserFailAction;
+  | StudentsCreateUserFailAction
+  | UpdateDocURLRequestAction
+  | UpdateDocURLSuccessAction
+  | UpdateDocURLFailAction;

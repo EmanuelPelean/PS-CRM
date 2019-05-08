@@ -7,7 +7,6 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { storeFreeze } from 'ngrx-store-freeze';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatListModule } from '@angular/material';
 import { AuthModule } from './auth/auth.module';
 import { SharedModule } from './shared/shared.module';
 import { AngularFireModule } from '@angular/fire';
@@ -16,6 +15,7 @@ import {
   FirestoreSettingsToken
 } from '@angular/fire/firestore';
 import { config } from './auth/firebase-config';
+import { AngularFireStorageModule } from 'angularfire2/storage';
 
 // this would be done dynamically with webpack for builds
 const environment = {
@@ -37,6 +37,7 @@ export const metaReducers: MetaReducer<any>[] = !environment.production
     SharedModule,
     AngularFireModule.initializeApp(config),
     AngularFirestoreModule,
+    AngularFireStorageModule,
     StoreModule.forRoot({}, { metaReducers }),
     EffectsModule.forRoot([]),
     environment.development ? StoreDevtoolsModule.instrument() : []

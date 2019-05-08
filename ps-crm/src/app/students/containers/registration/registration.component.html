@@ -1,5 +1,5 @@
 <mat-card class="registration-card">
-  <mat-card-header>
+  <mat-card-header class="card-header">
     <mat-card-title>Student Registration</mat-card-title>
     <mat-card-subtitle
       >Please complete the following steps to register a new
@@ -9,6 +9,10 @@
   <mat-card-content class="card-content">
     <app-registration-stepper
       (OnCreateUserEvent)="onCreateUser($event)"
+      (uploadPermit)="uploadPermit($event)"
+      (uploadMedical)="uploadMedical($event)"
+      [permitUploadProgress$$]="permitUploadProgress$"
+      [medicalUploadProgress$$]="medicalUploadProgress$"
     ></app-registration-stepper>
   </mat-card-content>
 </mat-card>

@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { RegistrationOneModel } from '../../models/registrationOne.model';
 import { RegistrationTwoModel } from '../../models/registrationTwo.model';
 import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-registration-stepper',
@@ -33,7 +34,7 @@ export class RegistrationStepperComponent implements OnInit {
   @Output()
   uploadMedical = new EventEmitter<File>();
 
-  constructor(private _formBuilder: FormBuilder) {}
+  constructor(private _formBuilder: FormBuilder, private router: Router) {}
 
   ngOnInit() {
     this.firstFormGroup = this._formBuilder.group({
@@ -92,5 +93,9 @@ export class RegistrationStepperComponent implements OnInit {
 
   public onUploadMedical(file: File) {
     this.uploadMedical.emit(file);
+  }
+
+  public onRegisterClick() {
+    this.router.navigate(['/students']);
   }
 }

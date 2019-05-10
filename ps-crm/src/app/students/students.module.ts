@@ -29,6 +29,10 @@ export const ROUTES: Routes = [
       {
         path: 'registration',
         component: fromContainers.RegistrationComponent
+      },
+      {
+        path: 'edit',
+        component: fromContainers.StudentsEditComponent
       }
     ]
   }

@@ -28,6 +28,12 @@ export const ROUTES: RouteInfo[] = [
     title: 'Registration',
     icon: 'person',
     class: ''
+  },
+  {
+    path: '/students/edit',
+    title: 'Edit Students',
+    icon: 'account_box',
+    class: ''
   }
 ];
 

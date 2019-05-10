@@ -99,4 +99,8 @@ export class StudentsService {
         ]
       });
   }
+
+  getUsers(): Observable<any> {
+    return this.firestore.collection('users').valueChanges();
+  }
 }

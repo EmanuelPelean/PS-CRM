@@ -34,6 +34,12 @@ export const ROUTES: RouteInfo[] = [
     title: 'Edit Students',
     icon: 'account_box',
     class: ''
+  },
+  {
+    path: '/students/calendar',
+    title: 'Calendar',
+    icon: 'calendar_today',
+    class: ''
   }
 ];
 

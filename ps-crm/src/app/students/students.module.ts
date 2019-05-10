@@ -33,6 +33,10 @@ export const ROUTES: Routes = [
       {
         path: 'edit',
         component: fromContainers.StudentsEditComponent
+      },
+      {
+        path: 'calendar',
+        component: fromContainers.CalendarComponent
       }
     ]
   }
